@@ -1,1 +1,493 @@
-https://github.com/jkcardu-ops/Biotecnology-red.git
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Biotecnología Roja — Innovación Médica</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
+  <style>
+    :root {
+      --rojo: #b91c1c;
+      --rojo-vivo: #ef4444;
+      --rojo-oscuro: #7f1d1d;
+      --negro: #0d0605;
+      --crema: #fdf8f7;
+      --gris: #6b7280;
+      --borde: rgba(185,28,28,0.15);
+    }
+
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--crema);
+      color: var(--negro);
+      overflow-x: hidden;
+    }
+
+    /* ── NAVBAR ── */
+    nav {
+      position: fixed; top: 0; left: 0; width: 100%;
+      z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 1.2rem 3rem;
+      background: rgba(13,6,5,0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(239,68,68,0.2);
+    }
+    .nav-logo {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.5rem; font-weight: 700;
+      color: var(--rojo-vivo);
+      letter-spacing: 0.05em;
+    }
+    .nav-links { display: flex; gap: 2.5rem; list-style: none; }
+    .nav-links a {
+      color: rgba(255,255,255,0.75);
+      text-decoration: none; font-size: .9rem;
+      letter-spacing: 0.06em; text-transform: uppercase;
+      transition: color .3s;
+    }
+    .nav-links a:hover { color: var(--rojo-vivo); }
+
+    /* ── HERO ── */
+    .hero {
+      min-height: 100vh;
+      background: var(--negro);
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      text-align: center;
+      padding: 8rem 2rem 4rem;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute; inset: 0;
+      background:
+        radial-gradient(ellipse 80% 60% at 50% 60%, rgba(185,28,28,0.18) 0%, transparent 70%),
+        radial-gradient(ellipse 40% 40% at 20% 20%, rgba(239,68,68,0.08) 0%, transparent 60%);
+    }
+    .hero-tag {
+      display: inline-block;
+      background: rgba(239,68,68,0.12);
+      border: 1px solid rgba(239,68,68,0.35);
+      color: var(--rojo-vivo);
+      font-size: .78rem; letter-spacing: .15em; text-transform: uppercase;
+      padding: .45rem 1.2rem; border-radius: 2rem;
+      margin-bottom: 2rem;
+      animation: fadeUp .8s ease both;
+    }
+    .hero h1 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(3rem, 8vw, 6.5rem);
+      font-weight: 700; line-height: 1.05;
+      color: white;
+      max-width: 900px;
+      animation: fadeUp .9s .1s ease both;
+    }
+    .hero h1 span { color: var(--rojo-vivo); }
+    .hero p {
+      color: rgba(255,255,255,0.6);
+      font-size: 1.15rem; line-height: 1.8;
+      max-width: 600px; margin: 1.8rem auto 2.5rem;
+      animation: fadeUp .9s .2s ease both;
+    }
+    .hero-cta {
+      display: flex; gap: 1rem; flex-wrap: wrap; justify-content: center;
+      animation: fadeUp .9s .3s ease both;
+    }
+    .btn-primary {
+      background: var(--rojo);
+      color: white; text-decoration: none;
+      padding: .85rem 2.2rem; border-radius: 4px;
+      font-size: .95rem; font-weight: 500;
+      transition: background .3s, transform .2s;
+    }
+    .btn-primary:hover { background: var(--rojo-vivo); transform: translateY(-2px); }
+    .btn-outline {
+      border: 1px solid rgba(255,255,255,0.3);
+      color: rgba(255,255,255,0.8); text-decoration: none;
+      padding: .85rem 2.2rem; border-radius: 4px;
+      font-size: .95rem;
+      transition: border-color .3s, color .3s;
+    }
+    .btn-outline:hover { border-color: var(--rojo-vivo); color: white; }
+
+    /* ── STATS ── */
+    .stats {
+      background: white;
+      border-top: 1px solid var(--borde);
+      border-bottom: 1px solid var(--borde);
+      padding: 3rem 2rem;
+      display: flex; justify-content: center; gap: 4rem; flex-wrap: wrap;
+    }
+    .stat { text-align: center; }
+    .stat-num {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2.8rem; font-weight: 700;
+      color: var(--rojo);
+    }
+    .stat-label { font-size: .85rem; color: var(--gris); margin-top: .3rem; text-transform: uppercase; letter-spacing: .08em; }
+
+    /* ── SECCIONES ── */
+    section { padding: 6rem 2rem; }
+    .container { max-width: 1100px; margin: 0 auto; }
+
+    .section-label {
+      font-size: .78rem; color: var(--rojo);
+      letter-spacing: .2em; text-transform: uppercase;
+      margin-bottom: 1rem;
+    }
+    .section-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 700; line-height: 1.2;
+      margin-bottom: 1.2rem;
+    }
+    .section-desc {
+      color: var(--gris); font-size: 1.05rem;
+      line-height: 1.8; max-width: 680px;
+    }
+
+    /* ── QUÉ ES ── */
+    #que-es { background: var(--crema); }
+    .que-es-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem; align-items: center;
+      margin-top: 3rem;
+    }
+    .que-es-visual {
+      position: relative;
+      height: 380px;
+      background: linear-gradient(135deg, var(--negro) 0%, var(--rojo-oscuro) 100%);
+      border-radius: 8px;
+      display: flex; align-items: center; justify-content: center;
+      overflow: hidden;
+    }
+    .dna-icon {
+      font-size: 7rem;
+      opacity: .25;
+      position: absolute;
+    }
+    .que-es-badge {
+      position: relative; z-index: 1;
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.15);
+      border-radius: 8px; padding: 1.5rem 2rem;
+      color: white; text-align: center;
+    }
+    .que-es-badge strong {
+      display: block;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.6rem; margin-bottom: .5rem;
+    }
+    .que-es-badge span { font-size: .9rem; opacity: .7; }
+    .que-es-text p { color: var(--gris); line-height: 1.8; margin-bottom: 1rem; }
+    .highlight-box {
+      background: white;
+      border-left: 3px solid var(--rojo);
+      padding: 1rem 1.5rem;
+      border-radius: 0 6px 6px 0;
+      margin-top: 1.5rem;
+      font-size: .95rem; color: var(--negro);
+    }
+
+    /* ── APLICACIONES ── */
+    #aplicaciones { background: white; }
+    .apps-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 1.5rem; margin-top: 3rem;
+    }
+    .app-card {
+      background: var(--crema);
+      border: 1px solid var(--borde);
+      border-radius: 8px; padding: 2rem;
+      transition: transform .3s, box-shadow .3s, border-color .3s;
+      position: relative; overflow: hidden;
+    }
+    .app-card::before {
+      content: '';
+      position: absolute; top: 0; left: 0; right: 0; height: 3px;
+      background: var(--rojo);
+      transform: scaleX(0); transform-origin: left;
+      transition: transform .4s ease;
+    }
+    .app-card:hover::before { transform: scaleX(1); }
+    .app-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 40px rgba(185,28,28,0.12);
+      border-color: rgba(185,28,28,0.3);
+    }
+    .app-icon { font-size: 2.5rem; margin-bottom: 1rem; }
+    .app-card h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.35rem; font-weight: 700;
+      margin-bottom: .6rem;
+    }
+    .app-card p { color: var(--gris); font-size: .93rem; line-height: 1.7; }
+
+    /* ── AVANCES ── */
+    #avances { background: var(--negro); }
+    #avances .section-title { color: white; }
+    #avances .section-desc { color: rgba(255,255,255,0.5); }
+    .timeline { margin-top: 3rem; }
+    .timeline-item {
+      display: grid;
+      grid-template-columns: 120px 1fr;
+      gap: 2rem; align-items: start;
+      padding-bottom: 2.5rem;
+      border-bottom: 1px solid rgba(255,255,255,0.07);
+      margin-bottom: 2.5rem;
+    }
+    .timeline-year {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2rem; font-weight: 700;
+      color: var(--rojo-vivo);
+    }
+    .timeline-content h3 {
+      color: white; font-size: 1.1rem;
+      font-weight: 500; margin-bottom: .5rem;
+    }
+    .timeline-content p { color: rgba(255,255,255,0.5); font-size: .93rem; line-height: 1.7; }
+
+    /* ── ÉTICA ── */
+    #etica { background: var(--crema); }
+    .etica-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem; margin-top: 3rem;
+    }
+    .etica-card {
+      background: white;
+      border: 1px solid var(--borde);
+      border-radius: 8px; padding: 2rem;
+    }
+    .etica-card h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.25rem; font-weight: 700;
+      margin-bottom: .8rem; color: var(--rojo);
+    }
+    .etica-card p { color: var(--gris); font-size: .93rem; line-height: 1.7; }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--negro);
+      padding: 3rem 2rem;
+      text-align: center;
+      border-top: 1px solid rgba(239,68,68,0.15);
+    }
+    footer .nav-logo { display: block; margin-bottom: 1rem; }
+    footer p { color: rgba(255,255,255,0.35); font-size: .85rem; }
+
+    /* ── ANIMACIONES ── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(24px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 768px) {
+      nav { padding: 1rem 1.5rem; }
+      .nav-links { display: none; }
+      .que-es-grid, .etica-grid { grid-template-columns: 1fr; }
+      .timeline-item { grid-template-columns: 80px 1fr; gap: 1rem; }
+      .stats { gap: 2rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAVEGACIÓN -->
+  <nav>
+    <span class="nav-logo">BioRoja</span>
+    <ul class="nav-links">
+      <li><a href="#que-es">¿Qué es?</a></li>
+      <li><a href="#aplicaciones">Aplicaciones</a></li>
+      <li><a href="#avances">Avances</a></li>
+      <li><a href="#etica">Ética</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <span class="hero-tag">🔬 Ciencia · Medicina · Futuro</span>
+    <h1>Biotecnología <span>Roja</span></h1>
+    <p>La rama de la biotecnología aplicada a la medicina que está transformando el diagnóstico, el tratamiento y la prevención de enfermedades humanas.</p>
+    <div class="hero-cta">
+      <a href="#que-es" class="btn-primary">Explorar</a>
+      <a href="#aplicaciones" class="btn-outline">Ver aplicaciones</a>
+    </div>
+  </section>
+
+  <!-- ESTADÍSTICAS -->
+  <div class="stats">
+    <div class="stat">
+      <div class="stat-num">+500</div>
+      <div class="stat-label">Medicamentos biológicos aprobados</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">$800B</div>
+      <div class="stat-label">Valor del mercado global (2024)</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">3.5M</div>
+      <div class="stat-label">Pacientes beneficiados con terapias génicas</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">1953</div>
+      <div class="stat-label">Año del descubrimiento del ADN</div>
+    </div>
+  </div>
+
+  <!-- ¿QUÉ ES? -->
+  <section id="que-es">
+    <div class="container">
+      <div class="que-es-grid">
+        <div class="que-es-visual">
+          <div class="dna-icon">🧬</div>
+          <div class="que-es-badge">
+            <strong>Biotecnología Roja</strong>
+            <span>Aplicación médica de la biología</span>
+          </div>
+        </div>
+        <div class="que-es-text">
+          <p class="section-label">Definición</p>
+          <h2 class="section-title">¿Qué es la Biotecnología Roja?</h2>
+          <p>La <strong>biotecnología roja</strong> es la rama de la biotecnología aplicada a la medicina y la salud humana. Su nombre hace referencia al color de la sangre y a su relación directa con el cuerpo humano.</p>
+          <p>Engloba el uso de organismos vivos, células y biomoléculas para desarrollar fármacos, vacunas, diagnósticos y terapias que mejoran la calidad de vida de millones de personas en todo el mundo.</p>
+          <div class="highlight-box">
+            💡 A diferencia de la biotecnología verde (agrícola) o azul (marina), la roja se enfoca exclusivamente en aplicaciones <strong>médicas y farmacéuticas</strong>.
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- APLICACIONES -->
+  <section id="aplicaciones">
+    <div class="container">
+      <p class="section-label">Usos actuales</p>
+      <h2 class="section-title">Principales Aplicaciones</h2>
+      <p class="section-desc">Desde la cura del cáncer hasta la edición del genoma humano, la biotecnología roja está cambiando la medicina tal como la conocemos.</p>
+      <div class="apps-grid">
+        <div class="app-card">
+          <div class="app-icon">🧬</div>
+          <h3>Terapia Génica</h3>
+          <p>Corrección o reemplazo de genes defectuosos responsables de enfermedades hereditarias como la hemofilia, distrofia muscular o ceguera congénita.</p>
+        </div>
+        <div class="app-card">
+          <div class="app-icon">💉</div>
+          <h3>Vacunas de ARNm</h3>
+          <p>Tecnología revolucionaria usada en las vacunas contra el COVID-19. Instruyen al cuerpo para producir proteínas que generan inmunidad sin usar virus vivos.</p>
+        </div>
+        <div class="app-card">
+          <div class="app-icon">🔬</div>
+          <h3>Anticuerpos Monoclonales</h3>
+          <p>Proteínas diseñadas para reconocer y atacar células cancerosas o agentes infecciosos con alta precisión, minimizando daños colaterales.</p>
+        </div>
+        <div class="app-card">
+          <div class="app-icon">✂️</div>
+          <h3>CRISPR-Cas9</h3>
+          <p>Herramienta de edición genética que funciona como «tijeras moleculares». Permite corregir mutaciones con una precisión sin precedentes en la historia.</p>
+        </div>
+        <div class="app-card">
+          <div class="app-icon">🏥</div>
+          <h3>Medicina Personalizada</h3>
+          <p>Tratamientos adaptados al perfil genético único de cada paciente, aumentando la eficacia y reduciendo efectos secundarios.</p>
+        </div>
+        <div class="app-card">
+          <div class="app-icon">🩺</div>
+          <h3>Diagnóstico Molecular</h3>
+          <p>Técnicas como PCR o secuenciación genómica para detectar enfermedades en etapas tempranas con alta sensibilidad y especificidad.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- AVANCES -->
+  <section id="avances">
+    <div class="container">
+      <p class="section-label" style="color:var(--rojo-vivo)">Hitos históricos</p>
+      <h2 class="section-title">Avances que Cambiaron la Historia</h2>
+      <p class="section-desc">Décadas de investigación han llevado a descubrimientos que parecían imposibles.</p>
+      <div class="timeline">
+        <div class="timeline-item">
+          <div class="timeline-year">1953</div>
+          <div class="timeline-content">
+            <h3>Descubrimiento de la Doble Hélice del ADN</h3>
+            <p>Watson y Crick describen la estructura del ADN, sentando las bases de toda la biología molecular moderna y la biotecnología.</p>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-year">1982</div>
+          <div class="timeline-content">
+            <h3>Primera Insulina Recombinante</h3>
+            <p>Se aprueba la insulina producida por bacterias modificadas genéticamente, salvando millones de vidas de pacientes diabéticos.</p>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-year">2003</div>
+          <div class="timeline-content">
+            <h3>Secuenciación del Genoma Humano</h3>
+            <p>Se completa el Proyecto Genoma Humano, descifrando los ~3,000 millones de pares de bases que componen nuestro ADN.</p>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-year">2012</div>
+          <div class="timeline-content">
+            <h3>Desarrollo de CRISPR-Cas9</h3>
+            <p>Jennifer Doudna y Emmanuelle Charpentier presentan CRISPR como herramienta de edición génica. Premio Nobel de Química en 2020.</p>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-year">2021</div>
+          <div class="timeline-content">
+            <h3>Vacunas ARNm contra COVID-19</h3>
+            <p>Las vacunas de Pfizer-BioNTech y Moderna demuestran la eficacia de la tecnología ARNm en humanos, abriendo una nueva era.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ÉTICA -->
+  <section id="etica">
+    <div class="container">
+      <p class="section-label">Reflexión crítica</p>
+      <h2 class="section-title">Consideraciones Éticas</h2>
+      <p class="section-desc">El enorme poder de la biotecnología roja trae consigo preguntas fundamentales que la sociedad debe responder colectivamente.</p>
+      <div class="etica-grid">
+        <div class="etica-card">
+          <h3>🔒 Privacidad Genética</h3>
+          <p>¿Quién tiene acceso a tu información genética? El uso de datos genómicos por parte de aseguradoras, empleadores o gobiernos plantea serios dilemas de privacidad.</p>
+        </div>
+        <div class="etica-card">
+          <h3>⚖️ Acceso Equitativo</h3>
+          <p>Las terapias génicas pueden costar más de $1 millón. ¿Solo tendrán acceso los países ricos? La brecha tecnológica puede convertirse en desigualdad de salud.</p>
+        </div>
+        <div class="etica-card">
+          <h3>👶 Modificación de Embriones</h3>
+          <p>La edición del genoma en embriones humanos es técnicamente posible. Existe debate sobre sus límites éticos y el riesgo de crear «bebés de diseño».</p>
+        </div>
+        <div class="etica-card">
+          <h3>🌍 Regulación Global</h3>
+          <p>Las leyes varían enormemente entre países. La falta de un marco regulatorio internacional genera «turismo genético» y zonas sin control.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <span class="nav-logo">BioRoja</span>
+    <p>© 2026 Biotecnología Roja · Página informativa con fines educativos</p>
+  </footer>
+
+</body>
+</html>
